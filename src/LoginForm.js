@@ -1,13 +1,41 @@
 import React from 'react';
 import authenticationURL from './config/config.js';
+import axios from 'axios';
 
 export default class LoginForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+      password: ""
+    }
+    this.setEmail = this.setEmail.bind(this);
+    this.setPassword = this.setPassword.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  setEmail(event) {
+    this.setState({ email: event.target.value })
+  }
+
+  setPassword(event) {
+    this.setState({ password: event.target.value })
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    axios.post(authenticationURL + '?session[email]=' + this.state.email + '&session[password]=' + this.state.password )
+    .then((response) => {
+      // process the response
+    })
+  }
+
   render() {
     return (
-      <form method="post" action={authenticationURL}>
-        <input type="text" name="session[email]" />
-        <input type="text" name="session[password]" />
-        <input type="submit" value="Login"/>
+      <form onSubmit={this.handleSubmit}>
+        <input type="text" onKeyUp={this.setEmail}/>
+        <input type="text" onKeyUp={this.setPassword}/>
+        <input type="submit" value="Login" />
       </form>
     )
   }
