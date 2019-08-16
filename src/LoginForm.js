@@ -26,7 +26,11 @@ export default class LoginForm extends React.Component {
     event.preventDefault();
     axios.post(authenticationURL + '?session[email]=' + this.state.email + '&session[password]=' + this.state.password )
     .then((response) => {
-      // process the response
+      let token = response.data.token;
+      localStorage.setItem('token', token);
+    })
+    .catch((error) => {
+      alert('The username and password combination was invalid.')
     })
   }
 
