@@ -1,10 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import { Route, Router } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
+import AdminDashboard from './AdminDashboard';
+import StudentDashboard from './StudentDashboard';
+import LoginForm from './LoginForm';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const history = createBrowserHistory();
+
+const routing = (
+  <Router history={history}>
+    <div>
+      <Route exact path='/' component={LoginForm} />
+      <Route path='/admin/dashboard' component={AdminDashboard} />
+      <Route path='/student/dashboard' component={StudentDashboard} />
+    </div>
+  </Router>
+)
+ReactDOM.render(routing, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

@@ -32,7 +32,12 @@ export default class LoginForm extends React.Component {
       let decodedPayload = atob(encodedPayload);
       let payloadObject = JSON.parse(decodedPayload);
       let role = payloadObject.role;
-      // TODO route to the dashboard associated with this particular role
+      if (role === "admin") {
+        this.props.history.push('/admin/dashboard');
+      }
+      else if (role === "student") {
+        this.props.history.push('/student/dashboard');
+      }
     })
     .catch((error) => {
       alert('The username and password combination was invalid.')
