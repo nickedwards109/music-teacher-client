@@ -6,6 +6,7 @@ import { createBrowserHistory } from 'history';
 import AdminDashboard from './AdminDashboard';
 import StudentDashboard from './StudentDashboard';
 import LoginForm from './LoginForm';
+import ErrorPage from './ErrorPage';
 import * as serviceWorker from './serviceWorker';
 
 const history = createBrowserHistory();
@@ -16,6 +17,7 @@ const routing = (
       <Route exact path='/' component={LoginForm} />
       <Route path='/admin/dashboard' component={AdminDashboard} />
       <Route path='/student/dashboard' component={StudentDashboard} />
+      <Route path='/404' component={ErrorPage} />
     </div>
   </Router>
 )

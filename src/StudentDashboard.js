@@ -16,7 +16,8 @@ class StudentDashboard extends React.Component {
       this.setState({firstName: response.data.firstName})
     })
     .catch((error) => {
-      // TODO render a 404 page
+      this.props.history.push('/404')
+    })
     })
   }
 
