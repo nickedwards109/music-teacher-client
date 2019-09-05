@@ -18,7 +18,6 @@ class StudentDashboard extends React.Component {
     .catch((error) => {
       this.props.history.push('/404')
     })
-    })
   }
 
   render() {
