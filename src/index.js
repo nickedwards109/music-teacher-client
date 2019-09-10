@@ -1,8 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import $ from 'jquery';
+import Popper from 'popper.js';
 import { Route, Router } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
+import './index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 import AdminDashboard from './AdminDashboard';
 import StudentDashboard from './StudentDashboard';
 import LoginForm from './LoginForm';
