@@ -17,7 +17,7 @@ const history = createBrowserHistory();
 
 const routing = (
   <Router history={history}>
-    <div>
+    <div className="centered-layout">
       <Route exact path='/' component={LoginForm} />
       <Route path='/admin/dashboard' component={AdminDashboard} />
       <Route path='/student/dashboard' component={StudentDashboard} />

@@ -1,4 +1,5 @@
 import React from 'react';
+import Header from './Header';
 import authenticationURL from './config/config.js';
 import axios from 'axios';
 
@@ -46,11 +47,14 @@ export default class LoginForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input type="text" onKeyUp={this.setEmail}/>
-        <input type="password" onKeyUp={this.setPassword}/>
-        <input type="submit" value="Login" />
-      </form>
+      <div className="col-12 col-lg-6 centered-layout">
+        <Header content="Welcome!"/>
+        <form onSubmit={this.handleSubmit} className="card">
+          <input type="text" onKeyUp={this.setEmail}/>
+          <input type="password" onKeyUp={this.setPassword}/>
+          <input type="submit" value="Login" />
+        </form>
+      </div>
     )
   }
 }
