@@ -36,6 +36,17 @@ form {
   margin-top: 3rem;
 }
 
-input:not(:first-child) {
+.input-container {
+  width: 100%;
+}
+
+.input-container:not(:first-child) {
   margin-top: 3rem;
+}
+
+.input-field {
+  width: 100%;
+  border-top: none;
+  border-right: none;
+  border-left: none;
 }

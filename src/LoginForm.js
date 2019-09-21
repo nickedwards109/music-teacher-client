@@ -50,9 +50,17 @@ export default class LoginForm extends React.Component {
       <div className="col-12 col-lg-6 centered-layout">
         <Header content="Welcome!"/>
         <form onSubmit={this.handleSubmit} className="card">
-          <input type="text" onKeyUp={this.setEmail}/>
-          <input type="password" onKeyUp={this.setPassword}/>
-          <input type="submit" value="Login" />
+          <div class="input-container">
+            <span>Email</span>
+            <input type="email" className="input-field" onKeyUp={this.setEmail}/>
+          </div>
+          <div class="input-container">
+            <span>Password</span>
+            <input type="password" className="input-field" onKeyUp={this.setPassword}/>
+          </div>
+          <div class="input-container">
+            <input type="submit" value="Login" />
+          </div>
         </form>
       </div>
     )
