@@ -11,7 +11,7 @@ class StudentDashboard extends React.Component {
 
   componentDidMount() {
     let token = localStorage.getItem('token')
-    axios.get("http://localhost:3000/api/v1/student/dashboard?token=" + token)
+    axios.get("http://localhost:3000/api/v1/student/dashboard", {headers: {"TOKEN": token}})
     .then((response) => {
       this.setState({firstName: response.data.firstName})
     })
