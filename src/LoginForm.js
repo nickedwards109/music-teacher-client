@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './Header';
-import authenticationURL from './config/config.js';
 import axios from 'axios';
+import { authenticationURL } from './config/config.js';
 
 export default class LoginForm extends React.Component {
   constructor(props) {

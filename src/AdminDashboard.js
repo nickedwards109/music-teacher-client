@@ -22,7 +22,10 @@ class AdminDashboard extends React.Component {
 
   render() {
     return(
-      <div>Welcome, {this.state.firstName}!</div>
+      <div>
+        <div>Welcome, {this.state.firstName}!</div>
+        <a href="/teachers/new"> Create a New Teacher</a>
+      </div>
     )
   }
 }

@@ -10,6 +10,7 @@ import './index.css';
 import AdminDashboard from './AdminDashboard';
 import StudentDashboard from './StudentDashboard';
 import LoginForm from './LoginForm';
+import NewTeacherForm from './NewTeacherForm';
 import ErrorPage from './ErrorPage';
 import * as serviceWorker from './serviceWorker';
 
@@ -21,6 +22,7 @@ const routing = (
       <Route exact path='/' component={LoginForm} />
       <Route path='/admin/dashboard' component={AdminDashboard} />
       <Route path='/student/dashboard' component={StudentDashboard} />
+      <Route path='/teachers/new' component={NewTeacherForm} />
       <Route path='/404' component={ErrorPage} />
     </div>
   </Router>
