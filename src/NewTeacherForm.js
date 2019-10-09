@@ -59,7 +59,9 @@ export default class NewTeacherForm extends React.Component {
       }
     )
     .then((response) => {
-      // TODO handle the response
+      let teachersJSON = '[' + response.data.users + ']'
+      localStorage.setItem('teachers', teachersJSON)
+      window.location = '/teachers'
     })
   }
 
