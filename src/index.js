@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import './index.css';
 import AdminDashboard from './AdminDashboard';
+import TeacherDashboard from './TeacherDashboard';
 import StudentDashboard from './StudentDashboard';
 import LoginForm from './LoginForm';
 import NewTeacherForm from './NewTeacherForm';
@@ -22,6 +23,7 @@ const routing = (
     <div className="centered-layout">
       <Route exact path='/' component={LoginForm} />
       <Route path='/admin/dashboard' component={AdminDashboard} />
+      <Route path='/teacher/dashboard' component={TeacherDashboard} />
       <Route path='/student/dashboard' component={StudentDashboard} />
       <Route path='/teachers/new' component={NewTeacherForm} />
       <Route exact path='/teachers' component={TeachersIndex} />

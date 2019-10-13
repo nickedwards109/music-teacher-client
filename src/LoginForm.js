@@ -36,6 +36,9 @@ export default class LoginForm extends React.Component {
       if (role === "admin") {
         this.props.history.push('/admin/dashboard');
       }
+      else if (role === "teacher") {
+        this.props.history.push('/teacher/dashboard');
+      }
       else if (role === "student") {
         this.props.history.push('/student/dashboard');
       }
