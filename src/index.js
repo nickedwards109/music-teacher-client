@@ -13,6 +13,7 @@ import StudentDashboard from './StudentDashboard';
 import LoginForm from './LoginForm';
 import NewTeacherForm from './NewTeacherForm';
 import TeachersIndex from './TeachersIndex';
+import NewLessonForm from './NewLessonForm';
 import ErrorPage from './ErrorPage';
 import * as serviceWorker from './serviceWorker';
 
@@ -27,6 +28,7 @@ const routing = (
       <Route path='/student/dashboard' component={StudentDashboard} />
       <Route path='/teachers/new' component={NewTeacherForm} />
       <Route exact path='/teachers' component={TeachersIndex} />
+      <Route path='/lessons/new' component={NewLessonForm} />
       <Route path='/404' component={ErrorPage} />
     </div>
   </Router>
