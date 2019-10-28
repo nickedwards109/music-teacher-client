@@ -25,7 +25,8 @@ class TeacherDashboard extends React.Component {
       <div>
         <div>Welcome, {this.state.firstName}!</div>
         <div>This is your teacher dashboard.</div>
-        <a href="/lessons/new">Create a New Lesson</a>
+        <a href="/lessons/new">Create a New Lesson</a><br/>
+        <a href="/lessons">View All Lessons</a>
       </div>
     )
   }
