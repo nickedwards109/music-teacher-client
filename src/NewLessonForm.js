@@ -65,6 +65,11 @@ export default class NewLessonForm extends React.Component {
           data: lessonFormData,
           headers: { "TOKEN":localStorage.getItem('token') }
         })
+        .then((response) => {
+          let data = response.data
+          let lessonId = data.lesson_id
+          this.props.history.push('/lessons/' + lessonId)
+        })
       })
     })
   }

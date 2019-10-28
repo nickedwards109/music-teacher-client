@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import Popper from 'popper.js';
-import { Route, Router } from 'react-router-dom';
+import { Route, Router, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
@@ -14,6 +14,7 @@ import LoginForm from './LoginForm';
 import NewTeacherForm from './NewTeacherForm';
 import TeachersIndex from './TeachersIndex';
 import NewLessonForm from './NewLessonForm';
+import Lesson from './Lesson';
 import ErrorPage from './ErrorPage';
 import * as serviceWorker from './serviceWorker';
 
@@ -22,14 +23,17 @@ const history = createBrowserHistory();
 const routing = (
   <Router history={history}>
     <div className="centered-layout">
-      <Route exact path='/' component={LoginForm} />
-      <Route path='/admin/dashboard' component={AdminDashboard} />
-      <Route path='/teacher/dashboard' component={TeacherDashboard} />
-      <Route path='/student/dashboard' component={StudentDashboard} />
-      <Route path='/teachers/new' component={NewTeacherForm} />
-      <Route exact path='/teachers' component={TeachersIndex} />
-      <Route path='/lessons/new' component={NewLessonForm} />
-      <Route path='/404' component={ErrorPage} />
+      <Switch>
+        <Route exact path='/' component={LoginForm} />
+        <Route path='/admin/dashboard' component={AdminDashboard} />
+        <Route path='/teacher/dashboard' component={TeacherDashboard} />
+        <Route path='/student/dashboard' component={StudentDashboard} />
+        <Route path='/teachers/new' component={NewTeacherForm} />
+        <Route exact path='/teachers' component={TeachersIndex} />
+        <Route path='/lessons/new' component={NewLessonForm} />
+        <Route path='/lessons/:id' component={Lesson} />
+        <Route path='/404' component={ErrorPage} />
+      </Switch>
     </div>
   </Router>
 )
