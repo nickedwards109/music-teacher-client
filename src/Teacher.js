@@ -5,7 +5,7 @@ export default class Teacher extends React.Component {
     let teacher = JSON.parse(this.props.teacher)
 
     return(
-      <div class="card">
+      <div className="card">
         <p>{teacher.first_name} {teacher.last_name}</p>
         <p>{teacher.email}</p>
       </div>
