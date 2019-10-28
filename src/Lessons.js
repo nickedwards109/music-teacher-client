@@ -35,7 +35,7 @@ export default class Lessons extends React.Component {
         <Header content="All Lessons" />
         {this.state.lessons.map((lesson) => {
           return(
-            <a href={"/lessons/" + lesson.id}>
+            <a href={"/lessons/" + lesson.id} key={lesson.id}>
               <div className="card">{lesson.title}</div>
             </a>
           )
