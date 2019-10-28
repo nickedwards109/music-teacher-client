@@ -3,11 +3,13 @@ const createUserURL = 'http://localhost:3000/api/v1/users';
 const presignedUploadURL = 'http://localhost:3000/api/v1/presigned_upload_url';
 const createLessonURL = 'http://localhost:3000/api/v1/lessons';
 const showLessonBaseURL = 'http://localhost:3000/api/v1/lessons';
+const lessonsIndexURL = 'http://localhost:3000/api/v1/lessons';
 
 export {
   authenticationURL,
   createUserURL,
   presignedUploadURL,
   createLessonURL,
-  showLessonBaseURL
+  showLessonBaseURL,
+  lessonsIndexURL
 }

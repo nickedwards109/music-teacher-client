@@ -15,6 +15,7 @@ import NewTeacherForm from './NewTeacherForm';
 import TeachersIndex from './TeachersIndex';
 import NewLessonForm from './NewLessonForm';
 import Lesson from './Lesson';
+import Lessons from './Lessons';
 import ErrorPage from './ErrorPage';
 import * as serviceWorker from './serviceWorker';
 
@@ -32,6 +33,7 @@ const routing = (
         <Route exact path='/teachers' component={TeachersIndex} />
         <Route path='/lessons/new' component={NewLessonForm} />
         <Route path='/lessons/:id' component={Lesson} />
+        <Route path='/lessons' component={Lessons} />
         <Route path='/404' component={ErrorPage} />
       </Switch>
     </div>
