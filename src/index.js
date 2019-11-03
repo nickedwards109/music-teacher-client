@@ -7,10 +7,11 @@ import { createBrowserHistory } from 'history';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import './index.css';
+import LoginForm from './LoginForm';
+import SetPasswordForm from './SetPasswordForm';
 import AdminDashboard from './AdminDashboard';
 import TeacherDashboard from './TeacherDashboard';
 import StudentDashboard from './StudentDashboard';
-import LoginForm from './LoginForm';
 import NewTeacherForm from './NewTeacherForm';
 import TeachersIndex from './TeachersIndex';
 import NewLessonForm from './NewLessonForm';
@@ -26,6 +27,7 @@ const routing = (
     <div className="centered-layout">
       <Switch>
         <Route exact path='/' component={LoginForm} />
+        <Route path='/set_password' component={SetPasswordForm} />
         <Route path='/admin/dashboard' component={AdminDashboard} />
         <Route path='/teacher/dashboard' component={TeacherDashboard} />
         <Route path='/student/dashboard' component={StudentDashboard} />
