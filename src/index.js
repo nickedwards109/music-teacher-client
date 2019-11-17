@@ -9,6 +9,8 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import './index.css';
 import LoginForm from './LoginForm';
 import SetPasswordForm from './SetPasswordForm';
+import InitiatePasswordResetForm from './InitiatePasswordResetForm';
+import PasswordResetEmailSent from './PasswordResetEmailSent';
 import AdminDashboard from './AdminDashboard';
 import TeacherDashboard from './TeacherDashboard';
 import StudentDashboard from './StudentDashboard';
@@ -28,6 +30,8 @@ const routing = (
       <Switch>
         <Route exact path='/' component={LoginForm} />
         <Route path='/set_password' component={SetPasswordForm} />
+        <Route path='/initiate_password_reset' component={InitiatePasswordResetForm} />
+        <Route path='/password_reset_email_sent' component={PasswordResetEmailSent} />
         <Route path='/admin/dashboard' component={AdminDashboard} />
         <Route path='/teacher/dashboard' component={TeacherDashboard} />
         <Route path='/student/dashboard' component={StudentDashboard} />

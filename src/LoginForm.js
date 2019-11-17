@@ -64,6 +64,9 @@ export default class LoginForm extends React.Component {
           <div className="input-container">
             <input type="submit" value="Login" />
           </div>
+          <div className="input-container">
+            <a href="/initiate_password_reset">Forgot Password?</a>
+          </div>
         </form>
       </div>
     )
