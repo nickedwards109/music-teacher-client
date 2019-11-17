@@ -2,6 +2,7 @@ import React from 'react'
 import Header from './Header'
 import axios from 'axios';
 import { setPasswordURL } from './config/config.js';
+import { resetPasswordURL } from './config/config.js';
 import { authenticationURL } from './config/config.js';
 
 
@@ -11,7 +12,7 @@ export default class SetPasswordForm extends React.Component {
     this.state = {
       password: "",
       passwordConfirmation: "",
-      uuid: window.location.search.split("uuid=")[1],
+      uuid: window.location.search.split("uuid=")[1].split("&")[0],
       email: window.location.search.split("email=")[1].split("&")[0]
     }
 
@@ -29,9 +30,14 @@ export default class SetPasswordForm extends React.Component {
   }
 
   handleSubmit(event) {
-    debugger
     event.preventDefault();
-    axios.post(setPasswordURL, {
+    let url;
+    if (window.location.pathname.includes("reset")) {
+      url = resetPasswordURL;
+    } else {
+      url = setPasswordURL;
+    }
+    axios.post(url, {
       user: {
         password: this.state.password,
         password_confirmation: this.state.passwordConfirmation,
@@ -69,9 +75,15 @@ export default class SetPasswordForm extends React.Component {
   }
 
   render() {
+    let headerText;
+    if (window.location.pathname.includes("reset")) {
+      headerText = "Please set your new password:";
+    } else {
+      headerText = "Pease set your password:"
+    }
     return(
       <div className="col-12 col-lg-6 centered-layout">
-        <Header content={"Please set your password:"} />
+        <Header content={headerText} />
         <form onSubmit={this.handleSubmit} className="card">
           <div className="input-container">
             <span>Password</span>

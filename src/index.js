@@ -32,6 +32,7 @@ const routing = (
         <Route path='/set_password' component={SetPasswordForm} />
         <Route path='/initiate_password_reset' component={InitiatePasswordResetForm} />
         <Route path='/password_reset_email_sent' component={PasswordResetEmailSent} />
+        <Route path='/reset_password' component={SetPasswordForm} />
         <Route path='/admin/dashboard' component={AdminDashboard} />
         <Route path='/teacher/dashboard' component={TeacherDashboard} />
         <Route path='/student/dashboard' component={StudentDashboard} />
