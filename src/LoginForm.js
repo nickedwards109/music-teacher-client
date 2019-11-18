@@ -13,6 +13,11 @@ export default class LoginForm extends React.Component {
     this.setEmail = this.setEmail.bind(this);
     this.setPassword = this.setPassword.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    if (localStorage.getItem('token')) {
+      let role = this.getRole(localStorage.getItem('token'));
+      this.redirectToDashboard(role);
+    }
+
   }
 
   setEmail(event) {
@@ -23,6 +28,26 @@ export default class LoginForm extends React.Component {
     this.setState({ password: event.target.value })
   }
 
+  redirectToDashboard(role) {
+    if (role === "admin") {
+      this.props.history.push('/admin/dashboard');
+    }
+    else if (role === "teacher") {
+      this.props.history.push('/teacher/dashboard');
+    }
+    else if (role === "student") {
+      this.props.history.push('/student/dashboard');
+    }
+  }
+
+  getRole(token) {
+    let encodedPayload = token.split(".")[1];
+    let decodedPayload = atob(encodedPayload);
+    let payloadObject = JSON.parse(decodedPayload);
+    let role = payloadObject.role;
+    return role;
+  }
+
   handleSubmit(event) {
     event.preventDefault();
     axios.post(authenticationURL + '?session[email]=' + this.state.email + '&session[password]=' + this.state.password )
@@ -30,19 +55,8 @@ export default class LoginForm extends React.Component {
       let token = response.data.token;
       localStorage.setItem('token', token);
       this.props.setLoggedInState();
-      let encodedPayload = token.split(".")[1];
-      let decodedPayload = atob(encodedPayload);
-      let payloadObject = JSON.parse(decodedPayload);
-      let role = payloadObject.role;
-      if (role === "admin") {
-        this.props.history.push('/admin/dashboard');
-      }
-      else if (role === "teacher") {
-        this.props.history.push('/teacher/dashboard');
-      }
-      else if (role === "student") {
-        this.props.history.push('/student/dashboard');
-      }
+      let role = this.getRole(token);
+      this.redirectToDashboard(role);
     })
     .catch((error) => {
       alert('The username and password combination was invalid.');
