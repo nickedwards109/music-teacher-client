@@ -29,6 +29,7 @@ export default class LoginForm extends React.Component {
     .then((response) => {
       let token = response.data.token;
       localStorage.setItem('token', token);
+      this.props.setLoggedInState();
       let encodedPayload = token.split(".")[1];
       let decodedPayload = atob(encodedPayload);
       let payloadObject = JSON.parse(decodedPayload);
@@ -44,7 +45,7 @@ export default class LoginForm extends React.Component {
       }
     })
     .catch((error) => {
-      alert('The username and password combination was invalid.')
+      alert('The username and password combination was invalid.');
     })
   }
 
