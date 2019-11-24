@@ -3,6 +3,12 @@ import Teacher from './Teacher';
 import Header from './Header';
 
 export default class TeachersIndex extends React.Component {
+  componentDidMount() {
+    if (!localStorage.getItem('token')) {
+      this.props.history.push('/')
+    }
+  }
+
   showAllTeachers() {
     // TODO if teachers data isn't in localStorage already, request the data
     // from the server

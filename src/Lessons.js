@@ -12,21 +12,25 @@ export default class Lessons extends React.Component {
   }
 
   componentDidMount() {
-    axios({
-      method: 'GET',
-      url: lessonsIndexURL,
-      headers: { "TOKEN":localStorage.getItem('token') }
-    })
-    .then((response) => {
-      let data = response.data;
-      let lessons = [];
-      data.lessons.forEach((lesson) => {
-        lessons.push(lesson);
+    if (!localStorage.getItem('token')) {
+      this.props.history.push('/')
+    } else {
+      axios({
+        method: 'GET',
+        url: lessonsIndexURL,
+        headers: { "TOKEN":localStorage.getItem('token') }
       })
-      this.setState({
-        lessons: lessons
+      .then((response) => {
+        let data = response.data;
+        let lessons = [];
+        data.lessons.forEach((lesson) => {
+          lessons.push(lesson);
+        })
+        this.setState({
+          lessons: lessons
+        })
       })
-    })
+    }
   }
 
   render() {

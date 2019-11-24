@@ -16,6 +16,12 @@ export default class NewLessonForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    if (!localStorage.getItem('token')) {
+      this.props.history.push('/')
+    }
+  }
+
   setTitle(event) {
     this.setState({title: event.target.value})
   }

@@ -8,6 +8,9 @@ export default class LogoutInProgressPage extends React.Component {
   }
 
   componentDidMount() {
+    if (!localStorage.getItem('token')) {
+      this.props.history.push('/')
+    }
     setTimeout(this.logout, 1250);
   }
 

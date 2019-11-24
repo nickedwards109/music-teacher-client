@@ -10,14 +10,18 @@ class StudentDashboard extends React.Component {
   }
 
   componentDidMount() {
-    let token = localStorage.getItem('token')
-    axios.get("http://localhost:3000/api/v1/student/dashboard", {headers: {"TOKEN": token}})
-    .then((response) => {
-      this.setState({firstName: response.data.firstName})
-    })
-    .catch((error) => {
-      this.props.history.push('/404')
-    })
+    if (!localStorage.getItem('token')) {
+      this.props.history.push('/')
+    } else {
+      let token = localStorage.getItem('token');
+      axios.get("http://localhost:3000/api/v1/student/dashboard", {headers: {"TOKEN": token}})
+      .then((response) => {
+        this.setState({firstName: response.data.firstName})
+      })
+      .catch((error) => {
+        this.props.history.push('/')
+      })
+    }
   }
 
   render() {
