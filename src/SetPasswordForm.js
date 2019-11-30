@@ -21,12 +21,6 @@ export default class SetPasswordForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidMount() {
-    if (!localStorage.getItem('token')) {
-      this.props.history.push('/')
-    }
-  }
-
   setPassword(event) {
     this.setState({password: event.target.value})
   }
@@ -85,7 +79,7 @@ export default class SetPasswordForm extends React.Component {
     if (window.location.pathname.includes("reset")) {
       headerText = "Please set your new password:";
     } else {
-      headerText = "Pease set your password:"
+      headerText = "Please set your password:"
     }
     return(
       <div className="col-12 col-lg-6 centered-layout">
