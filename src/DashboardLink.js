@@ -1,4 +1,5 @@
 import React from 'react';
+import getRole from './helpers';
 
 export default class DashboardLink extends React.Component {
   constructor(props) {
@@ -8,21 +9,11 @@ export default class DashboardLink extends React.Component {
     }
   }
 
-  // TODO getRole(token) is duplicated here and in the LoginForm component.
-  // This method should be extracted to a shared implementation.
-  getRole(token) {
-    let encodedPayload = token.split(".")[1];
-    let decodedPayload = atob(encodedPayload);
-    let payloadObject = JSON.parse(decodedPayload);
-    let role = payloadObject.role;
-    return role;
-  }
-
   render() {
     let dashboardLink;
     if (this.state.loggedIn && !window.location.pathname.includes('dashboard')) {
       let token = localStorage.getItem('token')
-      let role = this.getRole(token)
+      let role = getRole(token)
       let dashboardPath = '/' + role + '/dashboard'
       dashboardLink = <a href={dashboardPath} onClick={this.props.setLoggedOutState}>Go to Dashboard</a>;
     } else {

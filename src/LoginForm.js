@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './Header';
 import axios from 'axios';
 import { authenticationURL } from './config/config.js';
+import getRole from './helpers';
 
 export default class LoginForm extends React.Component {
   constructor(props) {
@@ -14,7 +15,7 @@ export default class LoginForm extends React.Component {
     this.setPassword = this.setPassword.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     if (localStorage.getItem('token')) {
-      let role = this.getRole(localStorage.getItem('token'));
+      let role = getRole(localStorage.getItem('token'));
       this.redirectToDashboard(role);
     }
 
@@ -40,14 +41,6 @@ export default class LoginForm extends React.Component {
     }
   }
 
-  getRole(token) {
-    let encodedPayload = token.split(".")[1];
-    let decodedPayload = atob(encodedPayload);
-    let payloadObject = JSON.parse(decodedPayload);
-    let role = payloadObject.role;
-    return role;
-  }
-
   handleSubmit(event) {
     event.preventDefault();
     axios.post(authenticationURL + '?session[email]=' + this.state.email + '&session[password]=' + this.state.password )
@@ -55,7 +48,7 @@ export default class LoginForm extends React.Component {
       let token = response.data.token;
       localStorage.setItem('token', token);
       this.props.setLoggedInState();
-      let role = this.getRole(token);
+      let role = getRole(token);
       this.redirectToDashboard(role);
     })
     .catch((error) => {
