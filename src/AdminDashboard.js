@@ -29,7 +29,6 @@ class AdminDashboard extends React.Component {
       <div>
         <div>Welcome, {this.state.firstName}!</div>
         <a href="/teachers/new"> Create a New Teacher</a><br/>
-        <a href="/teachers"> View All Teachers</a>
       </div>
     )
   }

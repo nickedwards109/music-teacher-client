@@ -17,7 +17,7 @@ import AdminDashboard from './AdminDashboard';
 import TeacherDashboard from './TeacherDashboard';
 import StudentDashboard from './StudentDashboard';
 import NewTeacherForm from './NewTeacherForm';
-import TeachersIndex from './TeachersIndex';
+import NewTeacherEmailSent from './NewTeacherEmailSent';
 import NewLessonForm from './NewLessonForm';
 import Lesson from './Lesson';
 import Lessons from './Lessons';
@@ -71,7 +71,7 @@ class App extends React.Component {
             <Route path='/teacher/dashboard' component={TeacherDashboard} />
             <Route path='/student/dashboard' component={StudentDashboard} />
             <Route path='/teachers/new' component={NewTeacherForm} />
-            <Route exact path='/teachers' component={TeachersIndex} />
+            <Route path='/new_teacher_email_sent' component={NewTeacherEmailSent} />
             <Route path='/lessons/new' component={NewLessonForm} />
             <Route path='/lessons/:id' component={Lesson} />
             <Route path='/lessons' component={Lessons} />

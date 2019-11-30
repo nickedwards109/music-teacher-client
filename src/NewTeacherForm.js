@@ -51,9 +51,11 @@ export default class NewTeacherForm extends React.Component {
       }
     )
     .then((response) => {
-      let teachersJSON = '[' + response.data.users + ']'
-      localStorage.setItem('teachers', teachersJSON)
-      window.location = '/teachers'
+      if (response.status === 204) {
+        window.location = '/new_teacher_email_sent'
+      } else {
+        window.location = '/404'
+      }
     })
   }
 
