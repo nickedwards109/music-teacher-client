@@ -8,7 +8,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import './index.css';
 import LoginForm from './LoginForm';
-import LogoutButton from './LogoutButton';
+import LogoutLink from './LogoutLink';
+import DashboardLink from './DashboardLink';
 import LogoutInProgressPage from './LogoutInProgressPage';
 import SetPasswordForm from './SetPasswordForm';
 import InitiatePasswordResetForm from './InitiatePasswordResetForm';
@@ -59,7 +60,8 @@ class App extends React.Component {
     return(
       <Router history={history}>
         <div className="centered-layout">
-        <LogoutButton loggedIn={this.state.loggedIn} setLoggedOutState={this.setLoggedOutState}/>
+        <LogoutLink loggedIn={this.state.loggedIn} setLoggedOutState={this.setLoggedOutState}/>
+        <DashboardLink loggedIn={this.state.loggedIn} />
           <Switch>
             <Route exact path='/' render={(props) => <LoginForm setLoggedInState={this.setLoggedInState} history={history}/>}/>
             <Route path='/logout' component={LogoutInProgressPage} />

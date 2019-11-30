@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class LogoutButton extends React.Component {
+export default class LogoutLink extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
