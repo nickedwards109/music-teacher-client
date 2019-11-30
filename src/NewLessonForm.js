@@ -82,8 +82,8 @@ export default class NewLessonForm extends React.Component {
 
   render() {
     return(
-      <div>
-        <form onSubmit={this.handleSubmit}>
+      <div className="col-12 col-lg-6 centered-layout">
+        <form onSubmit={this.handleSubmit} className="card">
           <div className="input-container">
             <span>Lesson Title:</span>
             <input type="text" name="lesson[title]" className="input-field" onKeyUp={this.setTitle} />
@@ -93,10 +93,10 @@ export default class NewLessonForm extends React.Component {
             <textarea type="text" name="lesson[text]" className="input-field" onKeyUp={this.setText} />
           </div>
           <div className="input-container">
-            <span>Attach an Audio File</span>
+            <span>Attach an Audio File</span><br/>
             <input type="file" name="lesson[audioFile]" className="input-field" ref={this.fileInput} />
           </div>
-          <div className="inputContainer">
+          <div className="input-container">
             <button type="submit" name="lesson">Create Lesson</button>
           </div>
         </form>

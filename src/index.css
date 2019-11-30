@@ -44,9 +44,10 @@ form {
   margin-top: 3rem;
 }
 
-.input-field {
+.input-field:not([type='file']) {
   width: 100%;
   border-top: none;
   border-right: none;
   border-left: none;
+  border-bottom: 1px solid rgba(0,0,0,.125);
 }
