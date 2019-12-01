@@ -43,18 +43,48 @@ export default class Lesson extends React.Component {
   }
 
   render() {
+    let assetPlayer;
     if (this.state.loading === true) {
       return(
         <div>Loading...</div>
       )
     } else {
+      let assetStorageURL = this.state.assetStorageURLs[0];
+      let filenameExtension = assetStorageURL.split('.')[assetStorageURL.split('.').length - 1].toUpperCase();
+      if (
+        filenameExtension === "WAV" ||
+        filenameExtension === "MP3" ||
+        filenameExtension === "WMA" ||
+        filenameExtension === "M4A" ||
+        filenameExtension === "FLAC"
+      )
+      {
+        assetPlayer = <audio controls>
+                        <source src={assetStorageURL} />
+                      </audio>
+      }
+      else if (
+        filenameExtension === "MOV"   ||
+        filenameExtension === "GIF"   ||
+        filenameExtension === "GIFV"  ||
+        filenameExtension === "AVI"   ||
+        filenameExtension === "WMV"   ||
+        filenameExtension === "MP4"   ||
+        filenameExtension === "M4P"   ||
+        filenameExtension === "M4V"   ||
+        filenameExtension === "MPG"   ||
+        filenameExtension === "MPEG"
+      )
+      {
+        assetPlayer = <video controls>
+                        <source src={assetStorageURL} />
+                      </video>
+      }
       return(
         <div>
           <Header content={this.state.title} />
           <p>{this.state.text}</p>
-          <audio controls>
-            <source src={this.state.assetStorageURLs[0]} />
-          </audio>
+          {assetPlayer}
         </div>
       )
     }

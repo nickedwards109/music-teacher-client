@@ -93,7 +93,7 @@ export default class NewLessonForm extends React.Component {
             <textarea type="text" name="lesson[text]" className="input-field" onKeyUp={this.setText} />
           </div>
           <div className="input-container">
-            <span>Attach an Audio File</span><br/>
+            <span>Attach an Audio or Video File</span><br/>
             <input type="file" name="lesson[audioFile]" className="input-field" ref={this.fileInput} />
           </div>
           <div className="input-container">
