@@ -3,7 +3,7 @@ import Header from './Header'
 import axios from 'axios';
 import { sendNewUserEmailURL } from './config/config.js';
 
-export default class NewTeacherForm extends React.Component {
+export default class NewStudentForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -43,7 +43,7 @@ export default class NewTeacherForm extends React.Component {
           first_name: this.state.firstName,
           last_name: this.state.lastName,
           email: this.state.email,
-          role: "teacher"
+          role: "student"
         }
       },
       {  headers:
@@ -52,7 +52,7 @@ export default class NewTeacherForm extends React.Component {
     )
     .then((response) => {
       if (response.status === 204) {
-        window.location = '/new_teacher_email_sent'
+        window.location = '/new_student_email_sent'
       } else {
         window.location = '/404'
       }
@@ -62,22 +62,22 @@ export default class NewTeacherForm extends React.Component {
   render() {
     return(
       <div className="col-12 col-lg-6 centered-layout">
-        <Header content="Please enter the new teacher's details:" />
+        <Header content="Please enter the new student's details:" />
         <form onSubmit={this.handleSubmit} className="card">
           <div className="input-container">
             <span>First Name</span>
-            <input type="text" name="user[first_name]" className="input-field" onKeyUp={this.setFirstName}/>
+            <input type="text" className="input-field" onKeyUp={this.setFirstName}/>
           </div>
           <div className="input-container">
             <span>Last Name</span>
-            <input type="text" name="user[last_name]" className="input-field" onKeyUp={this.setLastName}/>
+            <input type="text" className="input-field" onKeyUp={this.setLastName}/>
           </div>
           <div className="input-container">
             <span>Email</span>
-            <input type="email" name="user[email]" className="input-field" onKeyUp={this.setEmail}/>
+            <input type="email" className="input-field" onKeyUp={this.setEmail}/>
           </div>
           <div className="input-container">
-            <button type="submit" name="user">Create Teacher</button>
+            <button type="submit" name="user">Create Student</button>
           </div>
         </form>
       </div>
