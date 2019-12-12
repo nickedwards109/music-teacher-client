@@ -7,6 +7,8 @@ const presignedUploadURL = 'http://localhost:3000/api/v1/presigned_upload_url';
 const createLessonURL = 'http://localhost:3000/api/v1/lessons';
 const showLessonBaseURL = 'http://localhost:3000/api/v1/lessons';
 const lessonsIndexURL = 'http://localhost:3000/api/v1/lessons';
+const studentsIndexURL = 'http://localhost:3000/api/v1/students';
+const createAssignmentURL = 'http://localhost:3000/api/v1/assignments';
 
 export {
   authenticationURL,
@@ -17,5 +19,7 @@ export {
   presignedUploadURL,
   createLessonURL,
   showLessonBaseURL,
-  lessonsIndexURL
+  lessonsIndexURL,
+  studentsIndexURL,
+  createAssignmentURL
 }
