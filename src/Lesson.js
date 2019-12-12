@@ -1,20 +1,28 @@
 import React from 'react';
 import Header from './Header';
+import Assigner from './Assigner';
+import getRole from './helpers';
 import axios from 'axios';
 import { showLessonBaseURL } from './config/config.js';
 
 export default class Lesson extends React.Component {
-  // TODO handle multiple assets in the Lesson component
   constructor(props) {
     super(props);
     let path = this.props.history.location.pathname;
-    let lessonId = parseInt(path.split('/')[path.split('/').length - 1]);
+    let lessonID = parseInt(path.split('/')[path.split('/').length - 1]);
+    let role;
+    if (localStorage.getItem('token')) {
+      role = getRole(localStorage.getItem('token'))
+    } else {
+      role = null;
+    }
     this.state = {
-      lessonId: lessonId,
+      lessonID: lessonID,
       title: "",
       text: "",
       assetStorageURLs: [],
-      loading: true
+      loading: true,
+      role: role
     }
     this.componentDidMount = this.componentDidMount.bind(this);
   }
@@ -23,10 +31,10 @@ export default class Lesson extends React.Component {
     if (!localStorage.getItem('token')) {
       this.props.history.push('/')
     } else {
-      if (this.state.lessonId !== null) {
+      if (this.state.lessonID !== null) {
         axios({
           method: 'GET',
-          url: showLessonBaseURL + '/' + this.state.lessonId,
+          url: showLessonBaseURL + '/' + this.state.lessonID,
           headers: { "TOKEN":localStorage.getItem('token') }
         })
         .then((response) => {
@@ -80,11 +88,20 @@ export default class Lesson extends React.Component {
                         <source src={assetStorageURL} />
                       </video>
       }
+
+      let assigner;
+      if (this.state.role === 'teacher' || this.state.role === 'admin') {
+        assigner = <Assigner lessonID={this.state.lessonID}/>
+      } else {
+        assigner = ''
+      }
+
       return(
         <div>
           <Header content={this.state.title} />
           <p>{this.state.text}</p>
           {assetPlayer}
+          {assigner}
         </div>
       )
     }
