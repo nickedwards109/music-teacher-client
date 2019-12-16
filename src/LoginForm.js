@@ -18,7 +18,6 @@ export default class LoginForm extends React.Component {
       let role = getRole(localStorage.getItem('token'));
       this.redirectToDashboard(role);
     }
-
   }
 
   setEmail(event) {
@@ -48,8 +47,19 @@ export default class LoginForm extends React.Component {
       let token = response.data.token;
       localStorage.setItem('token', token);
       this.props.setLoggedInState();
-      let role = getRole(token);
-      this.redirectToDashboard(role);
+      let params = new URLSearchParams(window.location.search)
+
+      // The user may be a student who was sent here via a link to a lesson.
+      // If so, redirect to that lesson.
+      if (params.get('redirect') !== null && params.get('redirect').split('/')[1] === "lessons") {
+        this.props.history.push(params.get('redirect'))
+      }
+
+      // Otherwise, redirect to the dashboard for this user's role
+      else {
+        let role = getRole(token);
+        this.redirectToDashboard(role);
+      }
     })
     .catch((error) => {
       alert('The username and password combination was invalid.');
@@ -59,7 +69,7 @@ export default class LoginForm extends React.Component {
   render() {
     return (
       <div className="col-12 col-lg-6 centered-layout">
-        <Header content="Welcome!"/>
+        <Header content="Welcome! Please log in."/>
         <form onSubmit={this.handleSubmit} className="card">
           <div className="input-container">
             <span>Email</span>

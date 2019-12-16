@@ -29,7 +29,7 @@ export default class Lesson extends React.Component {
 
   componentDidMount() {
     if (!localStorage.getItem('token')) {
-      this.props.history.push('/')
+      this.props.history.push('/?redirect=' + window.location.pathname)
     } else {
       if (this.state.lessonID !== null) {
         axios({
