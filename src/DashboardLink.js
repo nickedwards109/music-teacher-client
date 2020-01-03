@@ -1,5 +1,5 @@
 import React from 'react';
-import getRole from './helpers';
+import { getRole } from './helpers';
 
 export default class DashboardLink extends React.Component {
   constructor(props) {

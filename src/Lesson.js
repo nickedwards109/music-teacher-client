@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './Header';
 import Assigner from './Assigner';
-import getRole from './helpers';
+import { getRole } from './helpers';
 import axios from 'axios';
 import { showLessonBaseURL } from './config/config.js';
 

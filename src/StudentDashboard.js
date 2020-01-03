@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import AssignedLessons from './AssignedLessons';
 
 class StudentDashboard extends React.Component {
   constructor(props) {
@@ -16,7 +17,9 @@ class StudentDashboard extends React.Component {
       let token = localStorage.getItem('token');
       axios.get("http://localhost:3000/api/v1/student/dashboard", {headers: {"TOKEN": token}})
       .then((response) => {
-        this.setState({firstName: response.data.firstName})
+        this.setState({
+          firstName: response.data.firstName
+        })
       })
       .catch((error) => {
         this.props.history.push('/')
@@ -26,7 +29,10 @@ class StudentDashboard extends React.Component {
 
   render() {
     return(
-      <div>Welcome, {this.state.firstName}!</div>
+      <div>
+        <div>Welcome, {this.state.firstName}!</div>
+        <AssignedLessons />
+      </div>
     )
   }
 }

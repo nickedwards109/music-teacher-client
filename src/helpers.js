@@ -6,4 +6,15 @@ const getRole = (token) => {
   return role;
 }
 
-export default getRole
+const getId = (token) => {
+  let encodedPayload = token.split(".")[1];
+  let decodedPayload = atob(encodedPayload);
+  let payloadObject = JSON.parse(decodedPayload);
+  let id = payloadObject.id;
+  return id;
+}
+
+export {
+  getRole,
+  getId
+}
