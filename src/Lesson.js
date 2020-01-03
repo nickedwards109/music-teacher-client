@@ -97,7 +97,7 @@ export default class Lesson extends React.Component {
       }
 
       return(
-        <div>
+        <div className="col-12 col-lg-6">
           <Header content={this.state.title} />
           <p>{this.state.text}</p>
           {assetPlayer}
