@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import AssignedLessons from './AssignedLessons';
+import { studentDashboardURL } from './config/config';
 
 class StudentDashboard extends React.Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class StudentDashboard extends React.Component {
       this.props.history.push('/')
     } else {
       let token = localStorage.getItem('token');
-      axios.get("http://localhost:3000/api/v1/student/dashboard", {headers: {"TOKEN": token}})
+      axios.get(studentDashboardURL, {headers: {"TOKEN": token}})
       .then((response) => {
         this.setState({
           firstName: response.data.firstName

@@ -1,18 +1,32 @@
-const authenticationURL = 'http://localhost:3000/api/v1/sessions';
-const sendNewUserEmailURL = 'http://localhost:3000/api/v1/send_new_user_email';
-const setPasswordURL = 'http://localhost:3000/api/v1/set_password';
-const initiatePasswordResetURL = 'http://localhost:3000/api/v1/initiate_password_reset';
-const resetPasswordURL = 'http://localhost:3000/api/v1/reset_password';
-const presignedUploadURL = 'http://localhost:3000/api/v1/presigned_upload_url';
-const createLessonURL = 'http://localhost:3000/api/v1/lessons';
-const showLessonBaseURL = 'http://localhost:3000/api/v1/lessons';
-const lessonsIndexURL = 'http://localhost:3000/api/v1/lessons';
-const studentsIndexURL = 'http://localhost:3000/api/v1/students';
-const createAssignmentURL = 'http://localhost:3000/api/v1/assignments';
-const assignmentsURL = 'http://localhost:3000/api/v1/assignments'
+// Replace 'scheme://hostname:port' with the scheme, hostname, and port of your
+// backend API endpoints.
+//
+// In development, this could be 'http://localhost:3000'
+//
+// In production, with endpoints integrated in Amazon API gateway, this could
+// default to port 443 on something like 'https://my-api-id.execute-api.region-id.amazonaws.com'
+
+const authenticationURL = 'scheme://hostname:port/api/v1/sessions';
+const adminDashboardURL = 'scheme://hostname:port/api/v1/admin/dashboard';
+const teacherDashboardURL = 'scheme://hostname:port/api/v1/teacher/dashboard'
+const studentDashboardURL = 'scheme://hostname:port/api/v1/student/dashboard';
+const studentsIndexURL = 'scheme://hostname:port/api/v1/students';
+const sendNewUserEmailURL = 'scheme://hostname:port/api/v1/send_new_user_email';
+const setPasswordURL = 'scheme://hostname:port/api/v1/set_password';
+const initiatePasswordResetURL = 'scheme://hostname:port/api/v1/initiate_password_reset';
+const resetPasswordURL = 'scheme://hostname:port/api/v1/reset_password';
+const presignedUploadURL = 'scheme://hostname:port/api/v1/presigned_upload_url';
+const createLessonURL = 'scheme://hostname:port/api/v1/lessons';
+const showLessonBaseURL = 'scheme://hostname:port/api/v1/lessons';
+const lessonsIndexURL = 'scheme://hostname:port/api/v1/lessons';
+const createAssignmentURL = 'scheme://hostname:port/api/v1/assignments';
+const assignmentsIndexURL = 'scheme://hostname:port/api/v1/assignments'
 
 export {
   authenticationURL,
+  adminDashboardURL,
+  teacherDashboardURL,
+  studentDashboardURL,
   sendNewUserEmailURL,
   setPasswordURL,
   initiatePasswordResetURL,
@@ -23,5 +37,5 @@ export {
   lessonsIndexURL,
   studentsIndexURL,
   createAssignmentURL,
-  assignmentsURL
+  assignmentsIndexURL
 }

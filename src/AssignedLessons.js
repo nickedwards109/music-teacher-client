@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Header from './Header';
-import { assignmentsURL } from './config/config';
+import { assignmentsIndexURL } from './config/config';
 import { getId } from './helpers';
 
 export default class AssignedLessons extends React.Component {
@@ -19,7 +19,7 @@ export default class AssignedLessons extends React.Component {
       let id = getId(localStorage.getItem('token'));
       axios({
         method: 'GET',
-        url: assignmentsURL + '?student_id=' + id,
+        url: assignmentsIndexURL + '?student_id=' + id,
         headers: {"TOKEN":localStorage.getItem('token')}
       })
       .then((response) => {

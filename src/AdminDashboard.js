@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { adminDashboardURL } from './config/config';
 
 class AdminDashboard extends React.Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class AdminDashboard extends React.Component {
       this.props.history.push('/')
     } else {
       let token = localStorage.getItem('token');
-      axios.get("http://localhost:3000/api/v1/admin/dashboard", {headers: {"TOKEN": token}})
+      axios.get(adminDashboardURL, {headers: {"TOKEN": token}})
       .then((response) => {
         this.setState({firstName: response.data.firstName})
       })
