@@ -3,8 +3,6 @@ import Header from './Header'
 import axios from 'axios';
 import { setPasswordURL } from './config/config.js';
 import { resetPasswordURL } from './config/config.js';
-import { authenticationURL } from './config/config.js';
-
 
 export default class SetPasswordForm extends React.Component {
   constructor(props) {
@@ -46,28 +44,7 @@ export default class SetPasswordForm extends React.Component {
     }
     )
     .then((response) => {
-      let email = this.state.email;
-      axios.post(authenticationURL + '?session[email]=' + email + '&session[password]=' + this.state.password )
-      .then((response) => {
-        let token = response.data.token;
-        localStorage.setItem('token', token);
-        let encodedPayload = token.split(".")[1];
-        let decodedPayload = atob(encodedPayload);
-        let payloadObject = JSON.parse(decodedPayload);
-        let role = payloadObject.role;
-        if (role === "admin") {
-          this.props.history.push('/admin/dashboard');
-        }
-        else if (role === "teacher") {
-          this.props.history.push('/teacher/dashboard');
-        }
-        else if (role === "student") {
-          this.props.history.push('/student/dashboard');
-        }
-      })
-      .catch((error) => {
-        this.props.history.push('/404')
-      })
+      this.props.history.push('/')
     })
     .catch((error) => {
       this.props.history.push('/404')
@@ -77,9 +54,9 @@ export default class SetPasswordForm extends React.Component {
   render() {
     let headerText;
     if (window.location.pathname.includes("reset")) {
-      headerText = "Please set your new password:";
+      headerText = "Please set your new password. After setting your new password, you will need to log in again.";
     } else {
-      headerText = "Please set your password:"
+      headerText = "Please set your password. After setting your password, you will need to log in."
     }
     return(
       <div className="col-12 col-lg-6 centered-layout">
