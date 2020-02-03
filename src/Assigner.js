@@ -10,7 +10,8 @@ export default class Assigner extends React.Component {
     this.state = {
       allStudents: [],
       studentIDsToBeAssigned: [],
-      submitted: false
+      formSubmitted: false,
+      infoAfterFormSubmission: ""
     }
     this.setAssignedStudent = this.setAssignedStudent.bind(this);
     this.createAssignments = this.createAssignments.bind(this);
@@ -62,11 +63,14 @@ export default class Assigner extends React.Component {
         data: assignment,
         headers: { "TOKEN":localStorage.getItem('token') }
       })
+      .then((response) => {
+        this.setState({formSubmitted: true})
+        this.setState({infoAfterFormSubmission: "Great! This lesson has been assigned to the selected students. An email with a link to the lesson has been sent to these students."})
+      })
       .catch((error) => {
-        window.location = '/404'
+        this.setState({infoAfterFormSubmission: "Oops! Something went wrong. The lessons weren't assigned to the students, and no emails were sent."})
       })
     }
-    this.setState({submitted: true})
   }
 
   render() {
@@ -78,7 +82,7 @@ export default class Assigner extends React.Component {
     );
 
     let AssignerTemplate;
-    if (this.state.submitted === false) {
+    if (this.state.formSubmitted !== true) {
       AssignerTemplate =
       <div>
         <Header content='Assign this lesson to students:' />
@@ -90,9 +94,7 @@ export default class Assigner extends React.Component {
     } else {
       AssignerTemplate =
       <div>
-        This lesson has been assigned to the selected students in the back-end
-        database. Functionality does not yet exist to notify students of this
-        assignment.
+        {this.state.infoAfterFormSubmission}
       </div>
     }
 
