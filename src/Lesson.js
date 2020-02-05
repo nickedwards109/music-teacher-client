@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './Header';
+import BoldHeader from './BoldHeader';
 import Assigner from './Assigner';
 import { getRole } from './helpers';
 import axios from 'axios';
@@ -98,7 +98,7 @@ export default class Lesson extends React.Component {
 
       return(
         <div className="col-12 col-lg-6">
-          <Header content={this.state.title} />
+          <BoldHeader content={this.state.title} />
           <p>{this.state.text}</p>
           {assetPlayer}
           {assigner}

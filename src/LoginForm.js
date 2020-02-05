@@ -69,7 +69,7 @@ export default class LoginForm extends React.Component {
   render() {
     return (
       <div className="col-12 col-lg-6 centered-layout">
-        <Header content="Welcome! Please log in."/>
+        <Header content="Welcome to the Music Learning App! Please log in."/>
         <form onSubmit={this.handleSubmit} className="card">
           <div className="input-container">
             <span>Email</span>
